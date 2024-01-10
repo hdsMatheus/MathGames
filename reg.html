@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Games</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="shop.html" class="flex items-center">
+          <img
+            src="images/controle-de-video-game.png"
+            alt="Game Store Logo"
+            class="h-12"
+          />
+          <span class="text-2xl font-semibold ml-4">Math Games</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="h-screen flex flex-col items-center justify-center">
+      <h2 class="text-center mb-4 text-black">
+        Seja bem-vindo ao MathGames, por favor faça o cadastro do seu usuário
+      </h2>
+
+      <form
+        id="registrationForm"
+        class="max-w-md bg-white p-6 rounded-md shadow-md space-y-4"
+      >
+        <label for="nome" class="block text-sm font-medium text-gray-700"
+          >Nome:</label
+        >
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          required
+          class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+        />
+
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email:</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+        />
+
+        <label for="senha" class="block text-sm font-medium text-gray-700"
+          >Senha:</label
+        >
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          required
+          class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+        />
+
+        <div class="mt-4 text-center">
+          <button
+            type="button"
+            onclick="cadastrarUsuario()"
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300 mx-2"
+          >
+            Cadastrar
+          </button>
+
+          <button
+            type="button"
+            onclick="voltar()"
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300 mx-2"
+          >
+            Voltar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function cadastrarUsuario() {
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const senha = document.getElementById("senha").value;
+
+        fetch("http://localhost:3000/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nome, email, senha }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.mensagem);
+          })
+          .catch((error) => {
+            console.error("Erro ao cadastrar usuário:", error);
+            alert("Erro ao cadastrar usuário. Por favor, tente novamente.");
+          });
+      }
+
+      function voltar() {
+        window.location.href = "home.html";
+      }
+    </script>
+  </body>
+</html>

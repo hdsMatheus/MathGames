@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Games</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="shop.html" class="flex items-center">
+          <img
+            src="images/controle-de-video-game.png"
+            alt="Game Store Logo"
+            class="h-12"
+          />
+          <span class="text-2xl font-semibold ml-4">Math Games</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="flex flex-col items-center justify-center h-screen">
+      <h2 class="text-center mb-4 text-black">
+        Bem-vindo ao MathGames, sua loja favorita de jogos!
+      </h2>
+
+      <div class="text-center">
+        <img
+          src="images/math3.jfif"
+          alt="Imagem"
+          class="mx-auto mb-4 h-40 w-32"
+        />
+      </div>
+
+      <div class="flex space-x-4">
+        <button
+          onclick="pagec()"
+          type="button"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Registrar
+        </button>
+
+        <button
+          onclick="pagee()"
+          type="button"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Entrar
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function pagec() {
+        window.location.href = "reg.html";
+      }
+      function pagee() {
+        window.location.href = "enter.html";
+      }
+    </script>
+  </body>
+</html>

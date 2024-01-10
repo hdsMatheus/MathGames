@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Games</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="shop.html" class="flex items-center">
+            <img
+              src="images/controle-de-video-game.png"
+              alt="Game Store Logo"
+              class="h-12"
+            />
+            <span class="text-2xl font-semibold ml-4">Math Games</span>
+          </a>
+        </div>
+
+        <div class="flex items-center">
+          <input
+            type="text"
+            placeholder="Pesquisar jogos..."
+            class="text-black py-2 rounded-md mr-4"
+          />
+          <button
+            class="bg-blue-700 text-white px-4 py-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring focus:border-blue-300"
+          >
+            Pesquisar
+          </button>
+        </div>
+
+        <div class="container mx-auto my-4">
+          <label for="categoryFilter" class="text-lg font-medium text-white"
+            >Filtrar por Categoria:</label
+          >
+          <select
+            id="categoryFilter"
+            class="ml-2 p-2 border rounded-md text-black"
+          >
+            <option value="all">Todas as Categorias</option>
+            <option value="plata">Plataforma</option>
+            <option value="rpg">RPG</option>
+            <option value="open">Mundo Aberto</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-5 gap-8">
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/It_Takes_Two_capa.jpg"
+          alt="Game 1"
+          class="w-64 object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">It Takes Two</h3>
+        <p class="text-gray-600">R$249,99</p>
+
+        <button
+          onclick="window.location.href='take2.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Sekiro_Shadows_Die_Twice_capa.png"
+          alt="Game 2"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Sekiro Shadows Die Twice</h3>
+        <p class="text-gray-600">R$199,99</p>
+        <button
+          onclick="window.location.href='sekiro.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Elden_Ring_capa.jpg"
+          alt="Game 3"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Elden Ring</h3>
+        <p class="text-gray-600">R$349,99</p>
+        <button
+          onclick="window.location.href='elden.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/Spyro_Reignited_Trilogy.png"
+          alt="Game 4"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Spyro Reignited Trilogy</h3>
+        <p class="text-gray-600">R$219,99</p>
+        <button
+          onclick="window.location.href='spyro.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Dark_Souls_2_capa.png"
+          alt="Game 5"
+          class="w-full object-cover flex-1"
+        />
+        <h3 class="text-lg font-medium">Dark Souls 2</h3>
+        <p class="text-gray-600">R$199,99</p>
+        <button
+          onclick="window.location.href='dk2.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Grand_Theft_Auto_V_capa.png"
+          alt="Game 6"
+          class="w-full object-cover flex-1"
+        />
+        <h3 class="text-lg font-medium">GTA 5</h3>
+        <p class="text-gray-600">R$99,99</p>
+        <button
+          onclick="window.location.href='gta.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/Ori_and_the_Will_of_the_Wisps.jpg"
+          alt="Game 7"
+          class="w-full object-cover flex-1"
+        />
+        <h3 class="text-lg font-medium">Ori and the Will of the Wisps</h3>
+        <p class="text-gray-600">R$199,99</p>
+        <button
+          onclick="window.location.href='ori.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/hollow_knight_voidheart_edition_xbox_one_front_cover.jpg"
+          alt="Game 8"
+          class="w-full object-cover flex-1"
+        />
+        <h3 class="text-lg font-medium">Hollow Knight</h3>
+        <p class="text-gray-600">R$249,99</p>
+        <button
+          onclick="window.location.href='hollow.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Dark_Souls_3_capa.png"
+          alt="Game 9"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Dark Souls 3</h3>
+        <p class="text-gray-600">R$299,99</p>
+        <button
+          onclick="window.location.href='dk3.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/TW3_Wild_Hunt (1).png"
+          alt="Game 10"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">The Witcher 3</h3>
+        <p class="text-gray-600">R$149,99</p>
+        <button
+          onclick="window.location.href='tw3.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/Crash-Bandicoot-4-capa.jpg"
+          alt="Game 11"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Crash Bandicoot 4</h3>
+        <p class="text-gray-600">R$249,99</p>
+        <button
+          onclick="window.location.href='cb4.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Capa_de_Forza_Horizon_5.jpg"
+          alt="Game 12"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Forza Horizon 5</h3>
+        <p class="text-gray-600">R$349,99</p>
+        <button
+          onclick="window.location.href='fh5.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Dark_Souls_1_capa.png"
+          alt="Game 13"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Dark Souls Remastered</h3>
+        <p class="text-gray-600">R$199,99</p>
+        <button
+          onclick="window.location.href='dk.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Red_Dead_Redemption_2.png"
+          alt="Game 14"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Red Dead Redemption 2</h3>
+        <p class="text-gray-600">R$249,99</p>
+        <button
+          onclick="window.location.href='rdr2.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/Capa_de_Limbo.jpg"
+          alt="Game 15"
+          class="w-full 50 object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Limbo</h3>
+        <p class="text-gray-600">R$49,99</p>
+        <button
+          onclick="window.location.href='limbo.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Minecraft_capa.png"
+          alt="Game 16"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Minecraft</h3>
+        <p class="text-gray-600">R$99,99</p>
+        <button
+          onclick="window.location.href='mine.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Assassins_Creed_Odyssey_capa.png"
+          alt="Game 17"
+          class="w-full 50 object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Assasins Creed Odyssey</h3>
+        <p class="text-gray-600">R$199,99</p>
+        <button
+          onclick="window.location.href='ac.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Watch_Dogs_2_cover.png"
+          alt="Game 18"
+          class="w-full 50 object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Watch Dogs 2</h3>
+        <p class="text-gray-600">R$99,99</p>
+        <button
+          onclick="window.location.href='wc2.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="plata"
+      >
+        <img
+          src="images/Crash_Bandicoot_N._Sane_Trilogy_cover_art.jpg"
+          alt="Game 19"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Crash Bandicoot Trilogy</h3>
+        <p class="text-gray-600">R$149,99</p>
+        <button
+          onclick="window.location.href='cbt.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="open"
+      >
+        <img
+          src="images/Far_cry_3_box_art.jpg"
+          alt="Game 20"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Farcry 3</h3>
+        <p class="text-gray-600">R$99,99</p>
+        <button
+          onclick="window.location.href='fc3.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+
+      <div
+        class="bg-white p-4 rounded-md shadow-md flex flex-col"
+        data-category="rpg"
+      >
+        <img
+          src="images/Capa_do_jogo_Starfield.jpg"
+          alt="Game 21"
+          class="w-full object-cover mb-4 flex-1"
+        />
+        <h3 class="text-lg font-medium">Starfield</h3>
+        <p class="text-gray-600">R$299,99</p>
+        <button
+          onclick="window.location.href='starfield.html'"
+          class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
+        >
+          Comprar
+        </button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var mySwiper = new Swiper(".swiper-container", {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+
+        var categoryFilter = document.getElementById("categoryFilter");
+        categoryFilter.addEventListener("change", function () {
+          var selectedCategory = categoryFilter.value;
+
+          var gameCards = document.querySelectorAll(".grid .bg-white");
+
+          gameCards.forEach(function (card) {
+            var cardCategory = card.getAttribute("data-category");
+
+            if (
+              selectedCategory === "all" ||
+              selectedCategory === cardCategory
+            ) {
+              card.style.display = "flex";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
