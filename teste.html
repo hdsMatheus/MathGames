@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TESTE</title>
+    <style>
+      body {
+        background-color: #f0f4f8;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #dados-produto {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1rem;
+        max-width: 100%;
+        margin-top: 8rem;
+        padding: 0 1rem;
+      }
+
+      .produto-container {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .produto-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+      }
+
+      .produto-container h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .produto-container p {
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .produto-container .preco {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .produto-container button {
+        background-color: #3498db;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+      }
+
+      nav {
+        background-color: #3b82f6;
+        padding: 1rem;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      nav img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      nav select {
+        padding: 0.5rem;
+        margin-right: 1rem;
+        border: none;
+        border-radius: 4px;
+      }
+
+      nav button {
+        background-color: #3498db;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <nav>
+      <div>
+        <img src="images/controle-de-video-game.png" alt="Logo" />
+        <span style="margin-left: 10px; color: white">MathGames</span>
+      </div>
+
+      <select id="filtroCategoria" onchange="filtrarPorCategoria()">
+        <option value="todos">Todos</option>
+        <option value="rpg">RPG</option>
+        <option value="plataforma">Plataforma</option>
+        <option value="open-world">Mundo aberto</option>
+      </select>
+
+      <input type="text" id="searchInput" placeholder="Pesquisar jogo..." />
+      <button onclick="filtrarProdutos()">Pesquisar</button>
+    </nav>
+
+    <div id="dados-produto" class="container mx-auto"></div>
+
+    <script>
+      async function obterDadosProduto() {
+        try {
+          const resposta = await fetch("http://localhost:3000/obterProdutos");
+          const dados = await resposta.json();
+
+          const dadosProdutoDiv = document.getElementById("dados-produto");
+
+          dados.forEach((produto) => {
+            const produtoInfo = `
+              <div class="produto-container">
+                <img src="${produto.cover_img_url}" alt="${produto.name}" style="height: 400px;"/>
+                <h3>${produto.name}</h3>
+                <p class="preco">${produto.price}</p>
+                <button onclick="exibirDetalhes('${produto.id}')">
+                  Comprar
+                </button>
+              </div>
+            `;
+
+            dadosProdutoDiv.innerHTML += produtoInfo;
+          });
+        } catch (erro) {
+          console.error("Erro ao obter dados do produto:", erro);
+        }
+      }
+
+      async function filtrarPorCategoria() {
+        const categoriaSelecionada =
+          document.getElementById("filtroCategoria").value;
+        const resposta = await fetch("http://localhost:3000/obterProdutos");
+        const todosProdutos = await resposta.json();
+
+        const dadosProdutoDiv = document.getElementById("dados-produto");
+        dadosProdutoDiv.innerHTML = "";
+
+        todosProdutos.forEach((produto) => {
+          if (
+            categoriaSelecionada === "todos" ||
+            produto.category === categoriaSelecionada
+          ) {
+            const produtoInfo = `
+              <div class="produto-container">
+                <img src="${produto.cover_img_url}" alt="${produto.name}" style="height: 400px;"/>
+                <h3>${produto.name}</h3>
+                <p class="preco">${produto.price}</p>
+                <button onclick="exibirDetalhes('${produto.id}')">
+                  Comprar
+                </button>
+              </div>
+            `;
+
+            dadosProdutoDiv.innerHTML += produtoInfo;
+          }
+        });
+      }
+
+      async function filtrarProdutos() {
+        const searchInput = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+        const resposta = await fetch("http://localhost:3000/obterProdutos");
+        const todosprodutos = await resposta.json();
+
+        const dadosProdutoDiv = document.getElementById("dados-produto");
+        dadosProdutoDiv.innerHTML = "";
+
+        todosprodutos.forEach((produto) => {
+          if (produto.name.toLowerCase().includes(searchInput)) {
+            const produtoInfo = `
+              <div class="produto-container">
+                <img src="${produto.cover_img_url}" alt="${produto.name}" style="height: 400px;"/>
+                <h3>${produto.name}</h3>
+                <p class="preco">R$ ${produto.price}</p>
+                <button onclick="exibirDetalhes('${produto.id}')">
+                  Comprar
+                </button>
+              </div>
+            `;
+
+            dadosProdutoDiv.innerHTML += produtoInfo;
+          }
+        });
+      }
+
+      function exibirDetalhes(id) {
+        // Redirecionar para a página específica do produto
+        window.location.href = `/${id}.html`;
+      }
+
+      window.onload = obterDadosProduto;
+    </script>
+  </body>
+</html>
