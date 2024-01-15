@@ -170,7 +170,7 @@
     <script>
       async function obterDadosProduto() {
         try {
-          const resposta = await fetch("http://localhost:3000/obterProdutos");
+          const resposta = await fetch("http://localhost:3001/obterProdutos");
           const dados = await resposta.json();
 
           const dadosProdutoDiv = document.getElementById("dados-produto");
@@ -197,7 +197,7 @@
       async function filtrarPorCategoria() {
         const categoriaSelecionada =
           document.getElementById("filtroCategoria").value;
-        const resposta = await fetch("http://localhost:3000/obterProdutos");
+        const resposta = await fetch("http://localhost:3001/obterProdutos");
         const todosProdutos = await resposta.json();
 
         const dadosProdutoDiv = document.getElementById("dados-produto");
@@ -228,7 +228,7 @@
         const searchInput = document
           .getElementById("searchInput")
           .value.toLowerCase();
-        const resposta = await fetch("http://localhost:3000/obterProdutos");
+        const resposta = await fetch("http://localhost:3001/obterProdutos");
         const todosprodutos = await resposta.json();
 
         const dadosProdutoDiv = document.getElementById("dados-produto");
