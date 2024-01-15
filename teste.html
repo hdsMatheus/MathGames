@@ -197,7 +197,9 @@
       async function filtrarPorCategoria() {
         const categoriaSelecionada =
           document.getElementById("filtroCategoria").value;
-        const resposta = await fetch("http://localhost:3000/obterProdutos");
+        const resposta = await fetch(
+          "https://novo-c9k7.onrender.com/obterProdutos"
+        );
         const todosProdutos = await resposta.json();
 
         const dadosProdutoDiv = document.getElementById("dados-produto");
