@@ -13,7 +13,7 @@
 
       #dados-produto {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-gap: 1rem;
         max-width: 100%;
         margin-top: 8rem;
@@ -29,7 +29,7 @@
 
       .produto-container img {
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
         border-radius: 4px;
         margin-bottom: 1rem;
@@ -52,7 +52,7 @@
       }
 
       .produto-container button {
-        background-color: #3498db;
+        background-color: #3b82f6;
         color: white;
         padding: 0.5rem 1rem;
         border: none;
@@ -67,30 +67,75 @@
         padding: 1rem;
         text-align: center;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
       }
 
       nav img {
         width: 50px;
         height: 50px;
         border-radius: 50%;
+        margin-bottom: 10px;
       }
 
       nav select {
+        margin-top: 1rem;
         padding: 0.5rem;
-        margin-right: 1rem;
         border: none;
         border-radius: 4px;
       }
 
+      nav input {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 4px;
+        margin-bottom: 10px;
+      }
+
       nav button {
+        margin-top: 1rem;
         background-color: #3498db;
         color: white;
         padding: 0.5rem 1rem;
         border: none;
         border-radius: 4px;
         cursor: pointer;
+      }
+
+      @media (min-width: 600px) {
+        #dados-produto {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        nav {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        nav img {
+          margin-bottom: 0;
+          margin-right: 10px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #dados-produto {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        #dados-produto {
+          grid-template-columns: repeat(5, 1fr);
+        }
+
+        nav input,
+        nav button {
+          margin-top: 0.5rem;
+        }
       }
     </style>
   </head>
@@ -105,11 +150,19 @@
         <option value="todos">Todos</option>
         <option value="rpg">RPG</option>
         <option value="plataforma">Plataforma</option>
-        <option value="open-world">Mundo aberto</option>
+        <option value="open">Open</option>
       </select>
 
       <input type="text" id="searchInput" placeholder="Pesquisar jogo..." />
       <button onclick="filtrarProdutos()">Pesquisar</button>
+
+      <a href="card.html">
+        <img
+          src="images/card.png"
+          alt="Shopping Cart"
+          class="h-12 cursor-pointer"
+        />
+      </a>
     </nav>
 
     <div id="dados-produto" class="container mx-auto"></div>
@@ -127,7 +180,7 @@
               <div class="produto-container">
                 <img src="${produto.cover_img_url}" alt="${produto.name}" style="height: 400px;"/>
                 <h3>${produto.name}</h3>
-                <p class="preco">${produto.price}</p>
+                <p class="preco">R$ ${produto.price}</p>
                 <button onclick="exibirDetalhes('${produto.id}')">
                   Comprar
                 </button>
@@ -159,7 +212,7 @@
               <div class="produto-container">
                 <img src="${produto.cover_img_url}" alt="${produto.name}" style="height: 400px;"/>
                 <h3>${produto.name}</h3>
-                <p class="preco">${produto.price}</p>
+                <p class="preco">R$ ${produto.price}</p>
                 <button onclick="exibirDetalhes('${produto.id}')">
                   Comprar
                 </button>
@@ -200,7 +253,6 @@
       }
 
       function exibirDetalhes(id) {
-        // Redirecionar para a página específica do produto
         window.location.href = `/${id}.html`;
       }
 

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Games - Carrinho</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <header class="bg-blue-500 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="teste.html" class="flex items-center">
+            <img
+              src="images/controle-de-video-game.png"
+              alt="Game Store Logo"
+              class="h-12"
+            />
+            <span class="text-2xl font-semibold ml-4">Math Games</span>
+          </a>
+        </div>
+        <a href="card.html">
+          <img
+            src="images/card.png"
+            alt="Shopping Cart"
+            class="h-12 cursor-pointer"
+          />
+        </a>
+      </div>
+    </header>
+
+    <div class="container mx-auto p-4 bg-white rounded-md shadow-md mt-8">
+      <h2 class="text-2xl font-semibold mb-4">Carrinho de Compras</h2>
+
+      <div
+        id="cartItems"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      ></div>
+
+      <button
+        onclick="buyItems()"
+        class="bg-green-500 text-white px-4 py-2 rounded-md mt-4 mx-auto block hover:bg-green-300 focus:outline-none focus:ring focus:border-green-300"
+      >
+        Comprar
+      </button>
+    </div>
+
+    <script>
+      // Recupera os itens do carrinho do localStorage
+      var cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Referência ao elemento onde os itens do carrinho serão exibidos
+      var cartContainer = document.getElementById("cartItems");
+
+      // Itera sobre os itens do carrinho e os exibe na página
+      cartItems.forEach(function (item, index) {
+        var card = document.createElement("div");
+        card.className = "bg-white rounded-md p-4 shadow-md";
+
+        var title = document.createElement("h3");
+        title.className = "text-xl font-medium mb-2";
+        title.textContent = item.title;
+
+        var price = document.createElement("p");
+        price.className = "text-gray-600 mb-2";
+        price.textContent = "Preço: R$" + item.price.toFixed(2);
+
+        var deleteButton = document.createElement("button");
+        deleteButton.className =
+          "bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300";
+        deleteButton.textContent = "Remover do carrinho";
+        deleteButton.onclick = function () {
+          removeFromCart(index);
+        };
+
+        card.appendChild(title);
+        card.appendChild(price);
+        card.appendChild(deleteButton);
+        cartContainer.appendChild(card);
+      });
+
+      function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cartItems));
+        location.reload(); // Recarrega a página para refletir as alterações
+      }
+
+      function buyItems() {
+        // Lógica para processar a compra
+        alert("Compra realizada com sucesso!");
+        localStorage.removeItem("cart");
+        location.reload(); // Recarrega a página para refletir as alterações
+      }
+    </script>
+  </body>
+</html>

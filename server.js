@@ -61,7 +61,6 @@ app.post("/cadastrar", (req, res) => {
   );
 });
 
-// Rota para autenticar um usuário e gerar token JWT
 app.post("/autenticar", (req, res) => {
   const { email, senha } = req.body;
 
@@ -92,7 +91,6 @@ app.post("/autenticar", (req, res) => {
 
       const usuarioAutenticado = resultados[0];
 
-      // Gerar token JWT
       const token = jwt.sign(
         { id: usuarioAutenticado.id, email: usuarioAutenticado.email },
         segredoJWT,
@@ -153,8 +151,7 @@ app.get("/obterProdutos", (req, res) => {
 });
 
 app.get("/obteropen", (req, res) => {
-  const obterProdutosQuery =
-    "SELECT * FROM produtos WHERE category = 'Mundo aberto'";
+  const obterProdutosQuery = "SELECT * FROM produtos WHERE category = 'open'";
 
   connection.query(obterProdutosQuery, (err, resultados) => {
     if (err) {
@@ -200,7 +197,7 @@ app.get("/obterrpg", (req, res) => {
   });
 });
 app.get("/", async (req, res) => {
-  res.sendfile(path.join(__dirname, "teste.html"));
+  res.sendfile(path.join(__dirname, "index.html"));
 });
 
 app.get("/registrar", async (req, res) => {
@@ -293,5 +290,5 @@ app.get("/21", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando em http://localhost:5500`);
 });

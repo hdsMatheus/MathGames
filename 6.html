@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Math Games - It Takes Two</title>
+    <title>Math Games - Farcry 3</title>
 
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
   </head>
+
   <body class="bg-gray-100">
     <header class="bg-blue-500 text-white py-4">
       <div class="container mx-auto flex justify-between items-center">
@@ -31,7 +32,7 @@
         <div class="flex justify-center mb-4">
           <img
             src="images/Far_cry_3_box_art.jpg"
-            alt="Ori"
+            alt="Farcry 3"
             class="w-64 h-64 object-cover rounded-md"
           />
         </div>
@@ -44,13 +45,13 @@
           onde você deve viver de acordo com os princípios da violência para
           sobreviver. Descubra os segredos sangrentos da ilha e leve a luta até
           o inimigo; improvisar e usar o ambiente a seu favor; e enganar sua
-          lista de habitantes implacáveis ​​e perturbados. Cuidado com a beleza
-          e o mistério desta ilha de insanidade... Você precisará de mais do que
-          sorte para escapar com vida. Principais recursos do jogo Lute em um
-          jogo de tiro cheio de ação Use um arsenal de armas e explosivos para
-          entrar em ação com a arma, derrube adversários próximos com sua lâmina
-          ou atire em inimigos desavisados ​​​​à distância. Uma ilha de perigo e
-          descoberta Explore um parque insular tão belíssimo quanto
+          lista de habitantes implacáveis ​​​​e perturbados. Cuidado com a
+          beleza e o mistério desta ilha de insanidade... Você precisará de mais
+          do que sorte para escapar com vida. Principais recursos do jogo Lute
+          em um jogo de tiro cheio de ação Use um arsenal de armas e explosivos
+          para entrar em ação com a arma, derrube adversários próximos com sua
+          lâmina ou atire em inimigos desavisados ​​​​à distância. Uma ilha de
+          perigo e descoberta Explore um parque insular tão belíssimo quanto
           diversificado, desde cadeias de montanhas a pastagens pantanosas e
           praias de areia branca. Abra caminho pelas cidades, templos, portos
           fluviais da ilha e muito mais. Elenco Encontre um elenco diversificado
@@ -63,11 +64,31 @@
         </p>
         <p class="text-2xl font-semibold mb-4">R$99,99</p>
         <button
+          onclick="addToCart()"
           class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
         >
           Adicionar ao carrinho
         </button>
       </div>
     </div>
+
+    <script>
+      function addToCart() {
+        var gameInfo = {
+          title: "Farcry 3",
+          price: 99.99,
+        };
+
+        if (typeof Storage !== "undefined") {
+          var cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+          cartItems.push(gameInfo);
+          localStorage.setItem("cart", JSON.stringify(cartItems));
+
+          alert("Jogo adicionado ao carrinho!");
+        } else {
+          alert("Desculpe, seu navegador não suporta o carrinho de compras.");
+        }
+      }
+    </script>
   </body>
 </html>

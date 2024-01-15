@@ -54,11 +54,31 @@
         </p>
         <p class="text-2xl font-semibold mb-4">R$249,99</p>
         <button
+          onclick="addToCart()"
           class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-300 focus:outline-none focus:ring focus:border-blue-300"
         >
           Adicionar ao carrinho
         </button>
       </div>
     </div>
+
+    <script>
+      function addToCart() {
+        var gameInfo = {
+          title: "It Takes Two",
+          price: 249.99,
+        };
+
+        if (typeof Storage !== "undefined") {
+          var cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+          cartItems.push(gameInfo);
+          localStorage.setItem("cart", JSON.stringify(cartItems));
+
+          alert("Jogo adicionado ao carrinho!");
+        } else {
+          alert("Desculpe, seu navegador não suporta o carrinho de compras.");
+        }
+      }
+    </script>
   </body>
 </html>
